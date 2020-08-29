@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageIndecisiveApp.master.cs" Inherits="MasterPageIndecisiveApp" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    
+<head runat="server">
+  <title> Indecisive App</title>
+   
+       
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+  
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+    
+
+ 
+</head>
+
+
+    <body> 
+        <div class="container">
+            <div class="jumbotron">
+                <h1  class="text-center"> Indecisive App</h1>
+                <p class="text-center"> Can't make up your mind on what to do?</p>
+                <p class="text-center"> Fret not we will help you to decide!</p>
+            </div>
+            <div class="text-center">
+                <input type="text" id="add">
+                <br> <br>
+            </div>
+        </div>
+        <div class="text-center">
+                    <button id="buttonadd" onclick="myFunction()" class="btn btn-success"> Add options</button>
+                    <br> <br>
+                    <div class="ops">
+                        <form>
+                            <select id="options" size="0"> </select>
+                        </form>
+                    </div>
+               </div>
+        <div class="text-center">
+            <button id="buttondo" onclick="selectRemoveFunction()" class="btn btn-danger"> Remove Selected</button>
+            <button id="buttonremoveall" onclick="removeFunction()" class="btn btn-danger"> Remove all options</button>
+            <div class="text-center">
+                <br> <br>
+                <button id="buttonDo" onclick="randomFunction()" class="btn btn-info"> What should i do?</button>
+                <br>
+            </div>
+        </div>
+                
+        </body>
+</html>
+        <body>
+            <script>
+function myFunction() {
+     
+     var x = document.getElementById("options");
+   
+     var option = document.createElement("option");
+     
+     option.text = document.getElementById("add").value;
+     
+     x.add(option);
+    
+     document.getElementById("add").value = "";
+ }
+
+</script> 
+           <script>
+function removeFunction() {
+       var x = document.getElementById("options");
+           
+       var length = x.options.length;
+          for (i = length-1; i >= 0;i--);
+
+          {
+              x.remove(i);
+          }
+}
+           
+          </script>
+            <script>
+ function randomFunction() {
+     var x = document.getElementById("options");
+     
+     var length = x.options.length;
+    
+     var index = Math.floor(Math.random() * length);
+     
+     alert(x.options[index].value);
+ }
+
+            </script>
+            <script>
+                function selectRemoveFunction() {
+                    var x = document.getElementById("options");
+                    x.remove(x.Selected);
+                }
+
+            </script>
+            <div>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </div>
+             
+        </body>
+
+ 
